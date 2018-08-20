@@ -42,18 +42,25 @@ $(document).ready(function () {
             var inputtedStreet = $(this).find("input.new-street").val();
             var inputtedCity = $(this).find("input.new-city").val();
             var inputtedState = $(this).find("input.new-state").val();
-            var newAddress = new Address(inputtedStreet,inputtedCity,inputtedState);
+            var newAddress = new Address(inputtedStreet, inputtedCity, inputtedState);
             newContact.addresses.push(newAddress);
         });
-        
+
         $("ul#contacts").append("<li><span class='contact'>" + newContact.fullName() + "</span></li>")
-        $("input#new-first-name").val("");
-        $("input#new-last-name").val("");
+
         $(".contact").last().click(function () {
             $("#show-contact").show();
             $("#show-contact h2").text(newContact.firstName);
             $(".first-name").text(newContact.firstName);
             $(".last-name").text(newContact.lastName);
+            $("ul#addresses").text("");
+            newContact.addresses.forEach(function (address) {
+                $("ul#addresses").append("<lil>" + address.street + ", " + address.city + ", " + address.state + "</li><br>")
+            })
+            $("input#new-first-name").val("");
+            $("input#new-last-name").val("");
+            $("input#new.new-street").val("");
+            $("input#new.new-state").val("");
         });
     });
 
