@@ -17,6 +17,14 @@ Address.prototype.fullAddress = function () {
 Contact.prototype.fullName = function () {
     return this.firstName + " " + this.lastName
 }
+
+function resetFields() {
+    $("input#new-first-name").val("");
+    $("input#new-last-name").val("");
+    $("input.new-street").val("");
+    $("input.new-city").val("");
+    $("input.new-state").val("");
+}
 // FRONT-END LOGIC
 
 $(document).ready(function () {
@@ -60,11 +68,7 @@ $(document).ready(function () {
             newContact.addresses.forEach(function (address) {
                 $("ul#addresses").append("<li>" + address.fullAddress() + "</li>")
             })
-            $("input#new-first-name").val("");
-            $("input#new-last-name").val("");
-            $("input#new.new-street").val("");
-            $("input#new.new-city").val("");
-            $("input#new.new-state").val("");
+            resetFields()
         });
     });
 
