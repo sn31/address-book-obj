@@ -55,11 +55,12 @@ $(document).ready(function () {
             $(".last-name").text(newContact.lastName);
             $("ul#addresses").text("");
             newContact.addresses.forEach(function (address) {
-                $("ul#addresses").append("<lil>" + address.street + ", " + address.city + ", " + address.state + "</li><br>")
+                $("ul#addresses").append("<li>" + address.street + ", " + address.city + ", " + address.state + "</li>")
             })
             $("input#new-first-name").val("");
             $("input#new-last-name").val("");
             $("input#new.new-street").val("");
+            $("input#new.new-city").val("");
             $("input#new.new-state").val("");
         });
     });
